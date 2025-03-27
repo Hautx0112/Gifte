@@ -17,5 +17,18 @@ namespace Gifte.Repositories
         {
             return await _context.UserAccounts.FirstOrDefaultAsync(u => u.Email == email && u.Password == password);
         }
+
+        public async Task<UserAccount> GetUserByEmail(string email)
+        {
+            return await _context.UserAccounts.FirstOrDefaultAsync(u => u.Email == email);
+        }
+
+        public async Task<UserAccount> CreateUser(UserAccount user)
+        {
+            await _context.UserAccounts.AddAsync(user);
+            await _context.SaveChangesAsync();
+            return user;
+        }
     }
+
 }

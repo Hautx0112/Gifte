@@ -188,9 +188,6 @@ public partial class GiftShopDBContext : DbContext
             entity.Property(e => e.Email)
                 .IsRequired()
                 .HasMaxLength(150);
-            entity.Property(e => e.EmployeeCode)
-                .IsRequired()
-                .HasMaxLength(50);
             entity.Property(e => e.FullName)
                 .IsRequired()
                 .HasMaxLength(100);
@@ -201,11 +198,9 @@ public partial class GiftShopDBContext : DbContext
                 .IsRequired()
                 .HasMaxLength(100);
             entity.Property(e => e.Phone)
-                .IsRequired()
                 .HasMaxLength(50);
             entity.Property(e => e.RequestCode).HasMaxLength(50);
             entity.Property(e => e.UserName)
-                .IsRequired()
                 .HasMaxLength(50);
         });
 

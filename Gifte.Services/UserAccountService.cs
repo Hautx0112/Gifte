@@ -10,8 +10,11 @@ namespace Gifte.Services
 {
     public interface IUserAccountService
     {
-        public Task<UserAccount> Authenticate(string email, string password);
+        Task<UserAccount> Authenticate(string email, string password);
+        Task<UserAccount> RegisterUser(UserAccount user);
+        Task<UserAccount> FindByEmail(string email);
     }
+
     public class UserAccountService : IUserAccountService
     {
         private readonly UserRepository _userRepo;
@@ -22,5 +25,17 @@ namespace Gifte.Services
         {
             return await _userRepo.GetUserAccount(email, password);
         }
+
+        public async Task<UserAccount> RegisterUser(UserAccount user)
+        {
+            return await _userRepo.CreateUser(user);
+        }
+
+        public async Task<UserAccount> FindByEmail(string email)
+        {
+            return await _userRepo.GetUserByEmail(email);
+        }
     }
+
 }
+
